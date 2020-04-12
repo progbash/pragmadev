@@ -28,6 +28,7 @@ PRODUCTION = not DEBUG
 
 ALLOWED_HOSTS = ['198.199.78.112']
 
+ADMINS = [('Kamran', 'kamransrecovery@gmail.com')]
 
 # Application definition
 
