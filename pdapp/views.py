@@ -68,14 +68,7 @@ def sign_up(request):
         form = CreateUserForm()
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
-            user_name = request.POST.get('first_name')
-            user_email = request.POST.get('email')
-            subject = 'PragmaDevə xoş qoşuldun !'
-            message = 'Salam, ' + str(user_name) + '. \nKod yazan barmaqların dərd görməsin.'
-            from_email = settings.SERVER_EMAIL
-            recipient_list = [user_email]
-            send_mail(subject, message, from_email, recipient_list)
-            messages.success(request, 'PragmaDev hesabın yaradıldı.')
+            
             if form.is_valid():
                 form.save()
                 return redirect('sign_in')
