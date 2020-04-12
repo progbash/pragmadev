@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block instructions %}
+<div class="instructions-container">
+    <div class="instructions-header">
+        <h1>Təlimatlar</h1>
+    </div>
+    <div class="instructions-content">
+        <ol class="instructions-list">
+            <li>
+                <p>Ana səhifədə hər bir məsələ üçün bir kart əlavə olunur. Burada məsələ haqqında kiçik detallar,
+                    məsələnin şərti ilə götürüldüyü mənbədə tanış olmaq üçün
+                    <button class="btn-solve">
+                        <a>Məsələyə Keç</a>
+                    </button>
+                    düyməsi və ən əsası məsələ ilə bağlı feedback göndərmək üçün
+                    <button class="btn-solve">
+                        <a>Feedback Göndər</a>
+                    </button>
+                    düyməsi yer alır.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <button class="btn-solve">
+                        <a>Feedback Göndər</a>
+                    </button>
+                    düyməsinin yönləndirdiyi səhifədə məsələ ilə bağlı bütün detallar yer alır. İnformativ bölmədən
+                    aşağıda isə
+                    məsələ ilə bağlı çətinlikləri, alternativ həll yollarını və ya sualları göndərə biləcəyiniz bir sahə
+                    yer alır.
+                    Unutmayın ki, <br /><strong>hər məsələ üçün yalnız və yalnız bir feedback göndərmək icazəniz
+                        var.</strong> Ona
+                    görə də feedback göndərməzdən əvvəl əgər məsələni həll edə bilməmisinizsə səbəbini yazmağı, həll
+                    etmisinizsə,
+                    "Məsələni həll etmişəm" düyməsinə klikləməyi və təyin olunmuş <strong>deadline-a qədər</strong> məsələ barədə feedback göndərməyi unutmayın.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Sözü gedən səhifədə məsələnin adının yanında yer alan 
+                    <span style="color:#41E063" class="material-icons">
+                        check_circle_outline
+                    </span> və ya
+                    <span style="color:red" class="material-icons">
+                        remove_circle_outline
+                    </span>
+                    ikonları uyğun olaraq məsələni həll edib-etmədiyinizi göstərir.
+                </p>
+            </li>
+            <li>
+                <p>Və son olaraq hər bir istifadəçinin inkişaf yolu izlənir və statistik məlumatlarınıza səhifənin yuxarı hissəsində yer alan
+                    adınızın üzərinə, daha ətraflı isə açılan menyuda "Xal: x" düyməsinə klikləyərək baxa bilərsiniz. 
+                    <br/>Xallar <code style="color:black;">həll olunan məsələlər / ümumi məsələ</code> düsturu ilə hesablanır. Və xalınızın 200-dən yüksək olduğu
+                    təqdirdə digər istifadəçilərin də həll etməsi üçün məsələ göndərə bilərsiniz.
+                </p>
+            </li>
+            <li>
+                <p>Funksionallıqlar daim artırılacaq, proyekt və beyinlərimizdən inkişafı əsirgəməməyə çalışacağıq.</p>
+            </li>
+        </ol>
+    </div>
+</div>
+{% endblock %}

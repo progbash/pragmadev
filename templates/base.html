@@ -1,0 +1,225 @@
+{% load score_tag %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+
+<!--#region head-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Hub For Tracking Performance of Pragmatech Developers">
+    <meta name="author" content="Pragmatech">
+    <meta name="keywords" content="Pragmatech Developers Hub">
+
+    <!-- Title Page-->
+    <title>Pragmatech Developers</title>
+
+    <!-- Icons font CSS-->
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+
+    <!-- Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<!-- #endregion -->
+
+<body>
+    <!-- #region head -->
+
+    <header>
+        <div class="row">
+            <div class="logo-container">
+                <a href="/">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                </a>
+            </div>
+            <div class="right-nav">
+                <div class="nav-link">
+                    <a href="{% url 'instructions' %}">Təlimatlar</a>
+                </div>
+                <div class="nav-link send-problem-link">
+                    <a href="#" id="send-problem-btn">Məsələ Göndər</a>
+                </div>
+                <div class="account">
+                    {% if user.is_authenticated %}
+                    <button class="profile-btn">
+                        <span class="material-icons">
+                            account_circle
+                        </span>
+                        {{ user.first_name }}
+                    </button>
+                    <ul class="dropdown-content">
+                        <li>
+                            <a class="user-stats-btn">Xal: {% score_tag %}</a>
+                            <div class="user-stats">
+                                <p>
+                                    Həll edilib: {% solved_tag %}
+                                </p>
+                                <p>Məsələ sayı: {% tasks_count %}</p>
+                            </div>
+                        </li>
+                        <li><a href="{% url 'sign_out' %}">Hesabdan Çıx</a></li>
+                    </ul>
+                    {% else %}
+                    <a href="{% url 'sign_in' %}" class="profile-btn" style="text-decoration: none; color: black;">
+                        <span class="material-icons">
+                            account_circle
+                        </span>
+                        Daxil ol
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mobile-right-nav">
+                <button class="mobile-dropdown-btn">
+                    <span class="material-icons">
+                        menu
+                    </span>
+                </button>
+                <div class="mobile-dropdown-nav">
+                    <div class="nav-link">
+                        <a href="{% url 'instructions' %}">Təlimatlar</a>
+                    </div>
+                    <div class="nav-link send-problem-link">
+                        <a href="#">Məsələ Göndər</a>
+                    </div>
+                    <div class="account">
+                        {% if user.is_authenticated %}
+                        <button class="profile-btn">
+                            <span class="material-icons">
+                                account_circle
+                            </span>
+                            {{ user.first_name }}
+                        </button>
+                        <ul class="dropdown-content">
+                            <li>
+                                <a class="user-stats-btn">Xal: {% score_tag %}</a>
+                                <div class="user-stats">
+                                    <p>
+                                        Həll edilib: {% solved_tag %}
+                                    </p>
+                                    <p>Məsələ sayı: {% tasks_count %}</p>
+                                </div>
+                            </li>
+                            <li><a href="{% url 'sign_out' %}">Hesabdan Çıx</a></li>
+                        </ul>
+                        {% else %}
+                        <a href="{% url 'sign_in' %}" class="profile-btn" style="text-decoration: none; color: black;">
+                            <span class="material-icons">
+                                account_circle
+                            </span>
+                            Daxil ol
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- #endregion -->
+
+    <!--#region main-->
+
+    <div class="page-wrapper bg-gra-01 p-b-100 font-poppins"> 
+        <div class="wrapper wrapper--w780">
+
+            <div class="feedback-message">
+
+                {% if messages %}
+                {% for message in messages %}
+                    <p class="text-success" style="font-size: 20px; margin-top: 50px;">{{ message }} 
+                        <span class="material-icons">
+                            done
+                        </span><p>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+            
+            {% block listoftasks %}
+            {% endblock %}
+
+            {% block task_details %}
+            {% endblock %}
+
+            {% block signup_signin %}
+            {% endblock %}
+
+            {% block instructions %}
+            {% endblock %}
+        </div>
+
+    </div>
+
+    <!--#endregion-->
+
+    <!--#region footer-->
+    
+    <footer>
+        <div class="footer-container">
+            <p>built with</p>
+            <span class="material-icons">favorite</span>
+            <p>by kamran.</p>
+        </div>
+    </footer>
+
+    <!--#endregion-->
+
+    <!-- #region scripts -->
+
+    <!-- Jquery JS-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'js/global.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".mobile-dropdown-nav").css("display", "none");
+            $(".mobile-dropdown-btn").click(function () {
+                $(".mobile-dropdown-nav").fadeToggle();
+            });
+        });
+    </script>
+
+    <script>
+        var coll = document.getElementsByClassName("user-stats-btn");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <script src="{% static 'js/restriction.js' %}"></script>
+
+    <!-- #endregion -->
+</body>
+
+</html>

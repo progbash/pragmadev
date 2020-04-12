@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block listoftasks %}
+<div class="task-container">    
+    {% for task in tasks %}
+    <div class="task-box">
+        <div>
+            <h2>{{ task.task_name }}</h2>
+            <h3>{{ solved }}</h3>
+            <p>Mənbə: <strong>{{ task.task_source }}</strong></p>
+            <p>Deadline: <strong>{{ task.task_deadline }}</strong></p>
+            <p>Yüklədi: {{ task.uploaded_by }}</p>
+            <div class="task-btns">
+                <button class="btn-solve">
+                    <a href="{{ task.task_url }}" target="_blank">Məsələyə Keç</a>
+                </button>
+                <button class="btn-solve">
+                    <a class="feedback-btn" href="/task_details/{{ task.slug }}">Feedback Göndər</a>
+                </button>
+            </div>
+        </div>
+        <div class="task-box-logo">
+            <img src="static/images/logo_icon.png" alt="PragmaDev" style="width: 100%;">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

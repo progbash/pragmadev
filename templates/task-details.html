@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block task_details %}
+<div class="panel-container">
+    <div class="panel">
+        <div class="panel-description">
+            <div class="task-detail-header">
+                <div class="task-detail-title">
+                    <div>
+                        <h1><a href="{{ task.task_url }}" target="_blank">{{task.task_name}}</a></h1>
+                    </div>
+                    <div class="task-status">
+                        {% if solved_or_not %}
+                        <span style="color:#41E063" class="material-icons">
+                            check_circle_outline
+                        </span>
+                        {% else %}
+                        <span style="color:red" class="material-icons">
+                            remove_circle_outline
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <p><b>Qeyd</b>: {{task.task_description}}</p>
+                {% if days_left > 0 and did_submit.count == 0 %}
+                <p><b>Deadline:</b> <strong style="color:limegreen">{{ days_left }}</strong> günün qalıb.</p>
+                {% elif did_submit.count > 0 %}
+                <p>
+                    <b>Deadline:</b> 
+                    Nə fərqi var, feedback göndərmisən artıq.
+                </p>
+                {% else %}
+                <p><b>Deadline</b> <strong style="color:red">bitib</strong>.</p>
+                {% endif %}
+                <p><b>Məsələyə baxılıb:</b> {{ feedback.count }} / <b>Həll olunub:</b> {{ solved_general.count }}</p>
+            </div>
+        </div>
+        {% if days_left > 0 and did_submit.count == 0 %}
+        <form action="{% url 'task_details' task.slug %}" method="POST">
+            {% csrf_token %}
+            {{ form.feedback_content }}
+            <div class="panel-buttons">
+                <div class="checkbox">
+                    <label for="solved-checkbox">Məsələni həll etmişəm</label>
+                    {{ form.is_solved }}
+                </div>
+                <div class="save-btn-container">
+                    <button class="btn btn--pill btn--green" type="submit">Göndər</button>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
