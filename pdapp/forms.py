@@ -73,7 +73,7 @@ class CreateFeedbackForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CreateFeedbackForm, self).__init__(*args, **kwargs)
 
-        self.fields['feedback_content'].widget.attrs['placeholder'] = 'Məsələni həll edərkən qarşılaşdığın sıxıntını, anlaşılmayan hissəni və ya maraqlı qalan məqamları qeyd et.'
+        self.fields['feedback_content'].widget.attrs['placeholder'] = 'Feedback bildir.'
         self.fields['feedback_content'].widget.attrs['class'] = 'task-feedback'
 
     
