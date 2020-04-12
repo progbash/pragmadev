@@ -26,7 +26,7 @@ SECRET_KEY = ')^k&s2d3n!8!m&q&8dt@*g7jyz*xkv15u@ok2xb02sd=fuv*^s'
 DEBUG = True
 PRODUCTION = not DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['198.199.78.112']
 
 
 # Application definition
@@ -76,10 +76,22 @@ WSGI_APPLICATION = 'pdproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pragmadevdb',
+        'USER': 'progbash',
+        'PASSWORD': 'kamran284',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
