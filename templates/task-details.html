@@ -20,7 +20,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <p><b>Qeyd</b>: {{task.task_description}}</p>
+                <p><b>Qeyd</b>: {{task.task_description|safe}}</p>
                 {% if days_left > 0 and did_submit.count == 0 %}
                 <p><b>Deadline:</b> <strong style="color:limegreen">{{ days_left }}</strong> günün qalıb.</p>
                 {% elif did_submit.count > 0 %}
