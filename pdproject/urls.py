@@ -19,5 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('dashboard/', admin.site.urls),
     path('', include('pdapp.urls')),
-    path('summernote/', include('django_summernote.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
