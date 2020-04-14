@@ -5,7 +5,6 @@ from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 class TaskAdmin(SummernoteModelAdmin):
-    list_display = ['task_name', 'task_source', 'task_deadline', 'uploaded_by']
     summernote_fields = ('task_description',)
 
 class TaskFeedbackAdmin(admin.ModelAdmin):
