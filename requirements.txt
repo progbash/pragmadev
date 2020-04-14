@@ -24,8 +24,6 @@ lazy-object-proxy==1.4.3
 lxml==4.5.0
 odfpy==1.4.0
 olefile==0.46
-openpyxl==3.0.2
-pdfminer.six==20181108
 Pillow==7.0.0
 pipenv==2018.11.26
 psycopg2-binary==2.8.4
