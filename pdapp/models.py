@@ -2,12 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_currentuser.db.models import CurrentUserField
 from django.utils.text import slugify
-from tinymce.models import HTMLField
 
 # Create your models here.
 class Task(models.Model):
     task_name = models.CharField(max_length=100)
-    task_description = HTMLField()
+    task_description = models.TextField(max_length=1000, null=True, blank=True)
     task_url = models.URLField(max_length=300, blank=True, null=True)
     slug = models.SlugField(unique=True, null=True, editable=False)
     task_source = models.CharField(max_length=50, blank=True, null=True)
