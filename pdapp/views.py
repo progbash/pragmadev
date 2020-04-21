@@ -32,8 +32,8 @@ def task_details(request, slug):
         did_submit = feedback.filter(sender_id=request.user.id)
         # Getting user score
         solved_personal = TaskFeedback.objects.filter(is_solved=True).filter(sender_id=request.user.id)
-        tasks_count = Task.objects.all().count()
-        user_score = solved_personal.count()*10
+        # tasks_count = Task.objects.all().count()
+        # user_score = int((solved_personal.count()/tasks_count)*10)
         
 
     if request.method == 'POST':
@@ -54,8 +54,8 @@ def task_details(request, slug):
         'feedback': feedback,
         'solved_general': solved_general,
         'solved_personal': solved_personal,
-        'tasks_count': tasks_count,
-        'user_score': user_score,
+        # 'tasks_count': tasks_count,
+        # 'user_score': user_score,
         'solved_or_not': solved_or_not,
         'did_submit': did_submit
     }

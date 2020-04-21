@@ -7,8 +7,7 @@ from ..models import Task, TaskFeedback
 def score_tag(context):
     request = context['request']
     solved_personal = TaskFeedback.objects.filter(is_solved=True).filter(sender_id=request.user.id)
-    tasks_count = Task.objects.all().count()
-    user_score = int((solved_personal.count()/tasks_count)*10)
+    user_score = solved_personal.count() * 10
 
     return user_score
 
