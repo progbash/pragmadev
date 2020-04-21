@@ -33,7 +33,7 @@ def task_details(request, slug):
         # Getting user score
         solved_personal = TaskFeedback.objects.filter(is_solved=True).filter(sender_id=request.user.id)
         tasks_count = Task.objects.all().count()
-        user_score = int((solved_personal.count()/tasks_count)*10)
+        user_score = solved_personal.count()*10
         
 
     if request.method == 'POST':
